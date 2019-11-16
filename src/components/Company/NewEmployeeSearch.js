@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchEmployees from './Company/NewEmployeeSearch';
 
 function SearchEmployees() {
     return(
@@ -15,6 +16,8 @@ function SearchEmployees() {
                 <br />
                 <button type='submit'>Search</button>
             </form>
+
+            <SearchEmployees />
         </>
     )
 }
