@@ -15,6 +15,8 @@ function SearchEmployees() {
                 <br />
                 <button type='submit'>Search</button>
             </form>
+
+            
         </>
     )
 }
