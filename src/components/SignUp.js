@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import api from '../utils/api';
+import Button from '@material-ui/core/Button'
 
 function Signup(props){
     const [newUser, setNewUser] = useState({
@@ -89,7 +90,7 @@ function Signup(props){
                 onChange={handleChange}
             />
             <br />
-            <button type='submit'>Sign Up</button>
+            <Button variant="contained" color="primary" type='submit'>Sign Up</Button>
         </form>
         </>
     )

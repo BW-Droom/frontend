@@ -38,7 +38,7 @@ function Nav() {
         <ProtectedRoute exact path='/seeker/dashboard' component={SeekerSwiping} />
         <ProtectedRoute exact path='/seeker/search' component={JobSearch} />
         <ProtectedRoute exact path='/seeker/account' component={Account} />
-        <ProtectedRoute exact paht='/company/search' component={SearchEmployees} />
+        <ProtectedRoute exact path='/company/search' component={SearchEmployees} />
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/listing' component={ListingForm} />
         </>
