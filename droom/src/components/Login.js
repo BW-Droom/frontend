@@ -48,7 +48,7 @@ function Signin(props) {
                 type='password' 
                 name='password' 
                 placeholder='Password' 
-                value={userCredentials.email} 
+                value={userCredentials.password} 
                 onChange={handleChange} 
             />
             <br/>
