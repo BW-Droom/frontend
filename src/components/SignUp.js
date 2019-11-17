@@ -5,6 +5,7 @@ import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
 
 
 const useStyles = makeStyles(theme => ({
@@ -15,9 +16,19 @@ const useStyles = makeStyles(theme => ({
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+
+    //TextField
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+      },
+      textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: 300,
+      },
+
   }));
-  
-//test
 
 function Signup(props){
 
@@ -76,9 +87,6 @@ function Signup(props){
             </Select>
             </FormControl> */}
 
-
-
-
       <FormControl className={classes.formControl}>
         <Select value={age} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
           <MenuItem value="" disabled>
@@ -90,16 +98,26 @@ function Signup(props){
         {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>
 
+
+
             <br />
-            <input 
-                type='text' 
-                name='name' 
-                placeholder='Name' 
+            <TextField
+                id="outlined-basic"
+                className={classes.textField}
+                label="Name"
+                name='name'
+                margin="normal"
+                variant="outlined"
                 value={newUser.name}
                 onChange={handleChanges}
             />
             <br />
-            <input 
+            <TextField
+                id="outlined-basic"
+                className={classes.textField}
+                label="Email"
+                margin="normal"
+                variant="outlined"
                 type='email' 
                 name='email' 
                 placeholder='Email'
@@ -107,7 +125,12 @@ function Signup(props){
                 onChange={handleChanges}                
             />
             <br />
-            <input 
+            <TextField
+                id="outlined-basic"
+                className={classes.textField}
+                label="Occupation"
+                margin="normal"
+                variant="outlined"
                 type='text' 
                 name='occupation' 
                 placeholder='Current Job' 
@@ -115,7 +138,12 @@ function Signup(props){
                 onChange={handleChanges}
             />
             <br />
-            <input 
+            <TextField
+                id="outlined-basic"
+                className={classes.textField}
+                label="Experience"
+                margin="normal"
+                variant="outlined"
                 type='text' 
                 name='experience' 
                 placeholder='Past Experience' 
@@ -123,7 +151,12 @@ function Signup(props){
                 onChange={handleChanges}
             />
             <br />
-            <input 
+            <TextField
+                id="outlined-basic"
+                className={classes.textField}
+                label="Dream Job"
+                margin="normal"
+                variant="outlined"
                 type='text' 
                 name='droom' 
                 placeholder='Dream Job' 
@@ -131,7 +164,12 @@ function Signup(props){
                 onChange={handleChanges}
             />
             <br />
-            <input 
+            <TextField
+                id="outlined-basic"
+                className={classes.textField}
+                label="Password"
+                margin="normal"
+                variant="outlined"
                 type='password' 
                 name='password' 
                 placeholder='Password' 
