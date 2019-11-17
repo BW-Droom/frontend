@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 function Signup(props){
 
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
+    const [age, setAge] = React.useState('');//this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
   
     const inputLabel = React.useRef(null);
     const [labelWidth, setLabelWidth] = React.useState(0);
@@ -78,14 +78,7 @@ function Signup(props){
     return (
         <>
         <form onSubmit={handleSubmit}>
-            <h1>Sign Up Here</h1>
-            {/* <FormControl className={classes.formControl}>
-            <InputLabel>Select Account Type </InputLabel>
-            <Select label='native select' >
-                <option value='employee'>Job-Seeker</option>
-                <option value='employer'>Employer</option>
-            </Select>
-            </FormControl> */}
+            <h1>Sign Up</h1>
 
       <FormControl className={classes.formControl}>
         <Select value={age} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
@@ -97,8 +90,6 @@ function Signup(props){
         </Select>
         {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>
-
-
 
             <br />
             <TextField
