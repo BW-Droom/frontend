@@ -33,9 +33,9 @@ const useStyles = makeStyles(theme => ({
 function Signup(props){
 
     const classes = useStyles();
-    const [age, setAge] = React.useState('');//this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
-  
-    
+    const [age, setAge] = React.useState('');
+    //this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
+     
   
     const handleChange = event => {
       setAge(event.target.value);
