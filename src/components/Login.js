@@ -1,54 +1,38 @@
 import React, { useState } from 'react';
 import api from '../utils/api';
 import FormControl from '@material-ui/core/FormControl'
-import { makeStyles } from '@material-ui/core/styles';
+
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import clsx from 'clsx';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-const useStyles = makeStyles(theme => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  
-
-
-function Signin(props) {
-
-    const useStyles = makeStyles(theme => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 120,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-  }));
-  
-
-    const classes = useStyles();
-    const [age, setAge] = React.useState('');
-  
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-      setLabelWidth();
-    }, []);
-  
+function Signin(props) {    
+    const [age, setAge] = React.useState('');    
     const handleChange = event => {
       setAge(event.target.value);
     };
-
 
     const [userCredentials, setUserCredential] = useState({
         email: '',
         password: '',
         type: '',
+        showPassword: false,
     })
+    const handleClickShowPassword = () => {
+      setUserCredential({ ...userCredentials, showPassword: !userCredentials.showPassword });
+    };
+    const handleMouseDownPassword = event => {
+      event.preventDefault();
+    };
 
     const handleChanges = (e) => {
         setUserCredential({
@@ -71,40 +55,51 @@ function Signin(props) {
     }
     return(
         <>
-        <form onSubmit={handleSubmit}>
-            <h1>Sign In Here</h1>
-            {/* <select name='type'>
-                <option value='employee'>Job-Seeker</option>
-                <option valer='empolyer'>Employer</option>
-            </select> */}
-      <FormControl className={classes.formControl}>
-        <Select value={age} onChange={handleChanges} displayEmpty className={classes.selectEmpty}>
-          <MenuItem value="" disabled>
-            Select Account Type
-          </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Employee</MenuItem>
-          <MenuItem value='employer'>🏢 Employer</MenuItem>
-        </Select>
-        {/* <FormHelperText>Account Type</FormHelperText> */}
-      </FormControl>
-
-            <br />
-            <input 
-                type='email' 
-                name='email' 
-                placeholder='Email' 
-                value={userCredentials.email} 
-                onChange={handleChanges} 
-            />
-            <br/>
-            <input 
-                type='password' 
-                name='password' 
-                placeholder='Password' 
-                value={userCredentials.email} 
-                onChange={handleChanges} 
-            />
-            <br/>
+        <form onSubmit={handleSubmit} className='signinForm'>
+            <h1>Sign In Here</h1>            
+            <FormControl>
+              <Select value={age} onChange={handleChange} displayEmpty >
+                <MenuItem value="" disabled>
+                  Select Account Type
+                </MenuItem>
+                <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span>Employee</MenuItem>
+                <MenuItem value='employer'><span role='img' aria-label="employee">🏢</span> Employer</MenuItem>
+              </Select>              
+            </FormControl>            
+          
+            <Grid className='email' container spacing={1} alignItems="flex-end">
+            <Grid item>
+              <AccountCircle />
+            </Grid>
+            <Grid item>
+              <TextField 
+                id="input-with-icon-grid" 
+                label="Email"
+                value={userCredentials.email}
+                onChange={handleChanges}
+              />
+            </Grid>
+            </Grid>
+            <FormControl >
+          <InputLabel htmlFor="standard-adornment-password">Password</InputLabel>
+          <Input
+            id="standard-adornment-password"
+            type={userCredentials.showPassword ? 'text' : 'password'}
+            value={userCredentials.password}
+            onChange={handleChanges}
+            endAdornment={
+              <InputAdornment position="end">       
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                >
+                  {userCredentials.showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
             <button type='submit'>Sign In</button> 
         </form>
         </> 

@@ -24,11 +24,7 @@ function Signup(props){
     const classes = useStyles();
     const [age, setAge] = React.useState('');
   
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-      setLabelWidth();
-    }, []);
+    
   
     const handleChange = event => {
       setAge(event.target.value);
@@ -68,24 +64,15 @@ function Signup(props){
         <>
         <form onSubmit={handleSubmit}>
             <h1>Sign Up Here</h1>
-            {/* <FormControl className={classes.formControl}>
-            <InputLabel>Select Account Type </InputLabel>
-            <Select label='native select' >
-                <option value='employee'>Job-Seeker</option>
-                <option value='employer'>Employer</option>
-            </Select>
-            </FormControl> */}
-
-
-
-
       <FormControl className={classes.formControl}>
         <Select value={age} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Employee</MenuItem>
-          <MenuItem value='employer'>🏢 Employer</MenuItem>
+          <MenuItem 
+            value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Employee</MenuItem>
+          <MenuItem 
+            value='employer'><span role='img' aria-label="employee">🏢</span> Employer</MenuItem>
         </Select>
         {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>
