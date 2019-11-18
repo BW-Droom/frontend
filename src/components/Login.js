@@ -83,7 +83,7 @@ function Signin(props) {
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Employee</MenuItem>
+          <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
           <MenuItem value='employer'>🏢 Employer</MenuItem>
         </Select>
         {/* <FormHelperText>Account Type</FormHelperText> */}
