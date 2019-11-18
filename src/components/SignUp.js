@@ -33,9 +33,8 @@ const useStyles = makeStyles(theme => ({
 function Signup(props){
 
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
-    //this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
-     
+    const [age, setAge] = React.useState('');//this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
+  
   
     const handleChange = event => {
       setAge(event.target.value);
@@ -81,8 +80,8 @@ function Signup(props){
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
-          <MenuItem value='employer'>🏢 Employer</MenuItem>
+          <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Job Seeker</MenuItem>
+          <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
         </Select>
         {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>

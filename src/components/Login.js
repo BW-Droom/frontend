@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import api from '../utils/api';
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl'
+import { makeStyles } from '@material-ui/core/styles';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
@@ -35,29 +36,17 @@ function Signin(props) {
     const classes = useStyles();
     const [age, setAge] = React.useState('');//this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
   
-
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-      setLabelWidth();
-    }, []);
   
     const handleChange = event => {
       setAge(event.target.value);
     };
 
+
     const [userCredentials, setUserCredential] = useState({
         email: '',
         password: '',
         type: '',
-        showPassword: false,
     })
-    const handleClickShowPassword = () => {
-      setUserCredential({ ...userCredentials, showPassword: !userCredentials.showPassword });
-    };
-    const handleMouseDownPassword = event => {
-      event.preventDefault();
-    };
 
     const handleChanges = (e) => {
         setUserCredential({
@@ -88,8 +77,8 @@ function Signin(props) {
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
-          <MenuItem value='employer'>🏢 Employer</MenuItem>
+          <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Job Seeker</MenuItem>
+          <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
         </Select>
         {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>
