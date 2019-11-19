@@ -54,12 +54,14 @@ function Signin(props) {
             [e.target.name]: e.target.value,
         })
     }
+   
     const handleSubmit = (e) => {
         e.preventDefault();
         //created blank api call waiting for the backend to fill in
         api()
-            .post("#", userCredentials)
+            .get("/", userCredentials)            
             .then(res => {
+              console.log(res)
                 localStorage.setItem('token', res.data.token)
                 props.history.push('#')
             })
