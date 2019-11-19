@@ -79,14 +79,13 @@ function Signin(props) {
             <h1>Sign In</h1>
 
       <FormControl className={classes.formControl}>
-        <Select value={age} onChange={handleChanges} displayEmpty className={classes.selectEmpty}>
+        <Select value={age} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
           <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
           <MenuItem value='employer'>🏢 Employer</MenuItem>
         </Select>
-        {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>
 
             <br />
@@ -112,7 +111,7 @@ function Signin(props) {
                 type='password' 
                 name='password' 
                 placeholder='Password' 
-                value={userCredentials.email} 
+                value={userCredentials.password} 
                 onChange={handleChanges} 
             />
             <br/>
