@@ -10,6 +10,7 @@ import Account from './Account';
 import { getToken } from '../utils/api';
 import ProtectedRoute from '../utils/ProtectedRoute';
 import SearchEmployees from './Company/NewEmployeeSearch';
+import SeekerForm from './JobSeeker/JobSeekerForm';
 
 function Nav() {
     const signedIn = getToken()
@@ -40,6 +41,7 @@ function Nav() {
         <ProtectedRoute exact path='/company/search' component={SearchEmployees} />
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/listing' component={ListingForm} />
+        <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
         </>
     )
 }
