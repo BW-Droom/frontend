@@ -116,7 +116,6 @@ function Signup(props){
           <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
           <MenuItem value='employer'>🏢 Employer</MenuItem>
         </Select>
-        {/* <FormHelperText>Account Type</FormHelperText> */}
       </FormControl>
 
         <br />
