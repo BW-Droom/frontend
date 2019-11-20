@@ -11,6 +11,7 @@ import { getToken } from '../utils/api';
 import ProtectedRoute from '../utils/ProtectedRoute';
 import SearchEmployees from './Company/NewEmployeeSearch';
 import SeekerForm from './JobSeeker/JobSeekerForm';
+import MainPage from './MainPage';
 
 function Nav() {
     const signedIn = getToken()
@@ -22,6 +23,7 @@ function Nav() {
           <p className='slogan'>Swipe for your check</p>
         </div>
         <nav>
+            <Link to='/'>Home</Link>
             <Link to='/signin'>Sign in</Link>
             <Link to='/signup'>Sign up</Link>
             {signedIn && <Link to='/seeker/dashboard'>Job-Seeker Swiping</Link>}
@@ -34,7 +36,7 @@ function Nav() {
         </div>
         
         <Route exact path='/signin' component={Signin} />
-        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/signup' component={Signup} />       
         <ProtectedRoute exact path='/seeker/dashboard' component={SeekerSwiping} />
         <ProtectedRoute exact path='/seeker/search' component={JobSearch} />
         <ProtectedRoute exact path='/seeker/account' component={Account} />
