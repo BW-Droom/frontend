@@ -36,14 +36,7 @@ const useStyles = makeStyles(theme => ({
 function Signup(props){
 
     const classes = useStyles();
-    const [type, setType] = React.useState('');//this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
-  
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-      setLabelWidth();
-    }, []);
-  
+    const [type, setType] = React.useState('');
     const handleChange = event => {
       setType(event.target.value);
     };
@@ -51,9 +44,6 @@ function Signup(props){
     const [newUser, setNewUser] = useState({
         name: '',
         email: '',
-        occupation: '',
-        experience: '',
-        droom: '',
         password: '',
         type: ''
 
@@ -69,37 +59,16 @@ function Signup(props){
         e.preventDefault();
         //created blank api call waiting for the backend to fill in
         api()
-            .create("#", newUser)
+            .post("/auth/seeker/register", newUser)
             .then(res => {
+              console.log(res)
                 localStorage.setItem('token', res.data.token)
-                props.history.push('#')
+                props.history.push('/seeker/dreamjob')
             })
             .catch(err => {
                 console.log(err)
             })
     }
-
-
-    //conditional rendering
-    
-    // function (props) {
-    //   const isLoggedIn = props.isLoggedIn;
-    //   if (isLoggedIn) {
-    //     return <UserGreeting />;
-    //   }
-    //   return <GuestGreeting />;
-    // }
-    
-    // ReactDOM.render(
-    //   // Try changing to isLoggedIn={true}:
-    //   <Greeting isLoggedIn={false} />,
-    //   document.getElementById('root')
-    // );
-
-
-
-
-
 
     return (
         <>
