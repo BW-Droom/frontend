@@ -34,17 +34,10 @@ const useStyles = makeStyles(theme => ({
 function Signin(props) {
 
     const classes = useStyles();
-    const [age, setAge] = React.useState('');//this useState serves no purpose other than the code breaks when its removed.  Its being used below with no effect.
-  
-
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    React.useEffect(() => {
-      setLabelWidth();
-    }, []);
+    const [type, setType] = React.useState('');
   
     const handleChange = event => {
-      setAge(event.target.value);
+      setType(event.target.value);
     };
 
 
@@ -60,14 +53,28 @@ function Signin(props) {
             [e.target.name]: e.target.value,
         })
     }
-    const handleSubmit = (e) => {
+    const handleSubmittee = (e) => {
+      e.preventDefault();
+      api()
+          .post("/auth/seeker/login", userCredentials)
+          .then(res => {
+            console.log(res)
+            localStorage.setItem('token', res.data.token)
+            props.history.push('#')
+          })
+          .catch(err => {
+              console.log(err)
+          })
+  }
+
+    const handleSubmitter = (e) => {
         e.preventDefault();
-        //created blank api call waiting for the backend to fill in
         api()
-            .post("#", userCredentials)
+            .post("/auth/company/login", userCredentials)
             .then(res => {
-                localStorage.setItem('token', res.data.token)
-                props.history.push('#')
+              console.log(res)
+              localStorage.setItem('token', res.data.token)
+              props.history.push('#')
             })
             .catch(err => {
                 console.log(err)
@@ -75,11 +82,11 @@ function Signin(props) {
     }
     return(
         <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={type === 'employee' ? handleSubmittee : handleSubmitter}>
             <h1>Sign In</h1>
 
       <FormControl className={classes.formControl}>
-        <Select value={age} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
+        <Select value={type} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
