@@ -32,6 +32,7 @@ function Nav() {
             {signedIn && <Link to='/company/search'>Search for Employees</Link>}
             {signedIn && <Link to='/company/dashboard'>Company Swiping</Link>}
             {signedIn && <Link to='/company/listing'>Create a Listing</Link>}
+            {signedIn && <Link to='/seeker/dreamjob'>Create a Listing</Link>}
         </nav>
         </div>
         
@@ -40,10 +41,10 @@ function Nav() {
         <ProtectedRoute exact path='/seeker/dashboard' component={SeekerSwiping} />
         <ProtectedRoute exact path='/seeker/search' component={JobSearch} />
         <ProtectedRoute exact path='/seeker/account' component={Account} />
+        <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
         <ProtectedRoute exact path='/company/search' component={SearchEmployees} />
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/listing' component={ListingForm} />
-        <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
         </>
     )
 }
