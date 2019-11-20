@@ -22,15 +22,15 @@ function Nav() {
           <p className='slogan'>Swipe for your check</p>
         </div>
         <nav>
-            <Link to='/signin'>Sign in</Link>
-            <Link to='/signup'>Sign up</Link>
+            {!signedIn && <Link to='/signin'>Sign in</Link>}
+            {!signedIn && <Link to='/signup'>Sign up</Link>}
             {signedIn && <Link to='/seeker/dashboard'>Job-Seeker Swiping</Link>}
             {signedIn && <Link to='/seeker/search'>Search for Jobs</Link>}
             {signedIn && <Link to='/seeker/account'>Account</Link>}
+            {signedIn && <Link to='/seeker/dreamjob'>Create a Listing</Link>}
             {signedIn && <Link to='/company/search'>Search for Employees</Link>}
             {signedIn && <Link to='/company/dashboard'>Company Swiping</Link>}
             {signedIn && <Link to='/company/listing'>Create a Listing</Link>}
-            {signedIn && <Link to='/seeker/dreamjob'>Create a Listing</Link>}
         </nav>
         </div>
         
