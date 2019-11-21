@@ -12,6 +12,8 @@ import ProtectedRoute from '../utils/ProtectedRoute';
 import SeekerForm from './JobSeeker/JobSeekerForm';
 import MainPage from './MainPage';
 import Logout from './logout';
+import CompanyMatches from './Company/MatchPage';
+import JobSeekerMatches from './JobSeeker/MatchPage';
 
 function Nav(props) {
     const signedIn = getToken()
@@ -35,6 +37,8 @@ function Nav(props) {
             {signedIn && <Link to='/seeker/dreamjob'>Dream Job</Link>}
             {signedIn && <Link to='/company/dashboard'>Company Swiping</Link>}
             {signedIn && <Link to='/company/listing'>Create a Listing</Link>}
+            {signedIn && <Link to='/company/matches'>Your Matches</Link>}
+            {signedIn && <Link to='/seeker/matches'>Your Matches</Link>}
             {signedIn && <Link to='/logout'>Log Out</Link>}
         </nav>
         </div>
@@ -48,6 +52,9 @@ function Nav(props) {
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/listing' component={ListingForm} />
         <ProtectedRoute exact path='/logout' component={Logout} />
+        <ProtectedRoute exact path='/company/matches' component={CompanyMatches} />
+        <ProtectedRoute exact path='/seeker/matches' component={JobSeekerMatches} />
+      
         </>
     )
 }

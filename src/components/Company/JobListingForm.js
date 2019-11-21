@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Company creates and removes job listings
+
 function ListingForm() {
     return (
         <>
