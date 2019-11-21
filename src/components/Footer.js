@@ -5,7 +5,7 @@ function Footer() {
 
     return (
         <footer>
-            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, <br></br>sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+            <p><a>Privacy Policy </a> | <a>Terms of Use</a> | <a>Job Posting Rules</a> | <a>Attribution Notices</a> | <a>Corporate Responsibility</a> Drrom, Inc. © All Rights Reserved Worldwide </p>
         </footer>
         
     )
