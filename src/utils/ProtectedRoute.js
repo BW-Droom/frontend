@@ -12,6 +12,7 @@ export function ProtectedRouteE(props) {
     return (
         <Route {...rest} render={(renderProps) => {
             if (localStorage.getItem("token") && props.type === 'employee') {
+
                 return <Componet {...renderProps} />
             } else {
                 return <Redirect to="/signin" />
