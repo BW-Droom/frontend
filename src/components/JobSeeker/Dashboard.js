@@ -9,5 +9,4 @@ function SeekerSwiping() {
         </>
     )
 }
-
 export default SeekerSwiping
