@@ -9,10 +9,11 @@ import JobSearch from './JobSeeker/JobSeeking';
 import Account from './Account';
 import { getToken } from '../utils/api';
 import ProtectedRoute from '../utils/ProtectedRoute';
-import SearchEmployees from './Company/NewEmployeeSearch';
 import SeekerForm from './JobSeeker/JobSeekerForm';
 import MainPage from './MainPage';
 import Logout from './logout';
+import CompanyMatches from './Company/MatchPage';
+import JobSeekerMatches from './JobSeeker/MatchPage';
 
 function Nav(props) {
     const signedIn = getToken()
@@ -32,6 +33,8 @@ function Nav(props) {
             <Link to='/signup'>Sign up</Link>
             {seeker && signedIn && <Link to='/seeker/dashboard'>Job-Seeker Swiping</Link>}
             {seeker && signedIn && <Link to='/seeker/search'>Search for Jobs</Link>}
+            {signedIn && <Link to='/company/matches'>Your Matches</Link>}
+            {signedIn && <Link to='/seeker/matches'>Your Matches</Link>}
             {seeker && signedIn && <Link to='/seeker/account'>Account</Link>}
             {seeker && signedIn && <Link to='/seeker/dreamjob'>Create a Listing</Link>}
             {company && signedIn && <Link to='/company/search'>Search for Employees</Link>}
@@ -47,10 +50,12 @@ function Nav(props) {
         <ProtectedRoute exact path='/seeker/search' component={JobSearch} />
         <ProtectedRoute exact path='/seeker/account' component={Account} />
         <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
-        <ProtectedRoute exact path='/company/search' component={SearchEmployees} />
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/listing' component={ListingForm} />
         <ProtectedRoute exact path='/logout' component={Logout} />
+        <ProtectedRoute exact path='/company/matches' component={CompanyMatches} />
+        <ProtectedRoute exact path='/seeker/matches' component={JobSeekerMatches} />
+      
         </>
     )
 }
