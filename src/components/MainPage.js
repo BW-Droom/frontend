@@ -1,7 +1,9 @@
 import React from 'react';
 import Nav from './Nav';
 
+
 function MainPage() {
+
     return (
         <div>           
             <Nav />
@@ -12,3 +14,4 @@ function MainPage() {
 }
 
 export default MainPage;
+

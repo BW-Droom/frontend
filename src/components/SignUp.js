@@ -44,6 +44,7 @@ function Signup(props){
     const [newUser, setNewUser] = useState({
         name: '',
         email: '',
+        job: '',
         password: '',
         type: ''
 
@@ -55,15 +56,22 @@ function Signup(props){
             [e.target.name]: e.target.value,
         })
     }
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        //created blank api call waiting for the backend to fill in
+    const handleSubmittee = (e) => {     
+      api()
+          .post("/auth/seeker/register")
+          .then(res => {
+            console.log(res)            
+          })
+          .catch(err => {
+              console.log(err)
+          })
+  }
+
+    const handleSubmitter = (e) => {       
         api()
-            .post("/auth/seeker/register", newUser)
+            .post("/auth/company/register")
             .then(res => {
-              console.log(res)
-                localStorage.setItem('token', res.data.token)
-                props.history.push('/seeker/dreamjob')
+              console.log(res)              
             })
             .catch(err => {
                 console.log(err)
@@ -72,7 +80,7 @@ function Signup(props){
 
     return (
         <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={type === 'employee' ? handleSubmittee : handleSubmitter}>
             <h1>Sign Up</h1>
 
       {/* TODO: User has to select an account type for the signup button to be active */}
@@ -82,22 +90,34 @@ function Signup(props){
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
-          <MenuItem value='employer'>🏢 Employer</MenuItem>
+          <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Job Seeker</MenuItem>
+          <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
         </Select>
       </FormControl>
-
         <br />
         <TextField
             id="outlined-basic"
             className={classes.textField}
             label="Name"
+            type='text'
             name='name'
             margin="normal"
             variant="outlined"
             value={newUser.name}
             onChange={handleChanges}
         />
+          <br />
+        {/* <TextField
+            id="outlined-basic"
+            className={classes.textField}
+            label="Dream Job"
+            type='text'
+            name='job'
+            margin="normal"
+            variant="outlined"
+            value={newUser.dreamJob}
+            onChange={handleChanges}
+        /> */}
         <br />
         <TextField
             id="outlined-basic"
@@ -111,8 +131,9 @@ function Signup(props){
             value={newUser.email}
             onChange={handleChanges}                
         />
-
-        <br />
+          <br />
+          
+        
         <TextField
             id="outlined-basic"
             className={classes.textField}

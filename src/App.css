@@ -17,6 +17,18 @@
   margin: 0px;
   
 }
+.email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.signinForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .navWrapper {
   display: flex;
   justify-content: space-evenly;
