@@ -17,8 +17,8 @@ import JobSeekerMatches from './JobSeeker/MatchPage';
 
 function Nav(props) {
     const signedIn = getToken()
-    const seeker = props.type === 'employee'
-    const company = props.type === 'employer'
+    // const seeker = props.type === 'employee'
+    // const company = props.type === 'employer'
 
     return(
         <>
@@ -28,18 +28,17 @@ function Nav(props) {
           <p className='slogan'>Swipe for your check</p>
         </div>
         <nav>
-            <Link to='/'>Home</Link>
-            <Link to='/signin'>Sign in</Link>
-            <Link to='/signup'>Sign up</Link>
-            {seeker && signedIn && <Link to='/seeker/dashboard'>Job-Seeker Swiping</Link>}
-            {seeker && signedIn && <Link to='/seeker/search'>Search for Jobs</Link>}
+            {!signedIn && <Link to='/'>Home</Link>}
+            {!signedIn && <Link to='/signin'>Sign in</Link>}
+            {!signedIn && <Link to='/signup'>Sign up</Link>}
+            {signedIn && <Link to='/seeker/dashboard'>Job-Seeker Swiping</Link>}
+            {signedIn && <Link to='/seeker/search'>Search for Jobs</Link>}
+            {signedIn && <Link to='/seeker/account'>Account</Link>}
+            {signedIn && <Link to='/seeker/dreamjob'>Dream Job</Link>}
+            {signedIn && <Link to='/company/dashboard'>Company Swiping</Link>}
+            {signedIn && <Link to='/company/listing'>Create a Listing</Link>}
             {signedIn && <Link to='/company/matches'>Your Matches</Link>}
             {signedIn && <Link to='/seeker/matches'>Your Matches</Link>}
-            {seeker && signedIn && <Link to='/seeker/account'>Account</Link>}
-            {seeker && signedIn && <Link to='/seeker/dreamjob'>Create a Listing</Link>}
-            {company && signedIn && <Link to='/company/search'>Search for Employees</Link>}
-            {company && signedIn && <Link to='/company/dashboard'>Company Swiping</Link>}
-            {company && signedIn && <Link to='/company/listing'>Create a Listing</Link>}
             {signedIn && <Link to='/logout'>Log Out</Link>}
         </nav>
         </div>

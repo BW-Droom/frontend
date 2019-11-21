@@ -60,7 +60,7 @@ function Signup(props){
       api()
           .post("/auth/seeker/register")
           .then(res => {
-            console.log(res)            
+            props.history.push('/seeker/account')            
           })
           .catch(err => {
               console.log(err)
@@ -71,7 +71,7 @@ function Signup(props){
         api()
             .post("/auth/company/register")
             .then(res => {
-              console.log(res)              
+              props.history.push('/company/listing')           
             })
             .catch(err => {
                 console.log(err)
