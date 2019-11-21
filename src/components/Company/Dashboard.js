@@ -1,5 +1,7 @@
 import React from 'react';
 
+// Company swipes thru job seekers
+
 function CompanySwiping() {
     return(
         <>
