@@ -60,7 +60,7 @@ function Signin(props) {
           .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
-            props.history.push('#')
+            props.history.push('/seeker/dashboard')
           })
           .catch(err => {
               console.log(err)
@@ -74,7 +74,7 @@ function Signin(props) {
             .then(res => {
               console.log(res)
               localStorage.setItem('token', res.data.token)
-              props.history.push('#')
+              props.history.push('/company/dashboard')
             })
             .catch(err => {
                 console.log(err)
