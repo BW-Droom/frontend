@@ -90,8 +90,8 @@ function Signin(props) {
           <MenuItem value="" disabled>
             Select Account Type
           </MenuItem>
-          <MenuItem value='employee'>👨🏿‍💼 Job Seeker</MenuItem>
-          <MenuItem value='employer'>🏢 Employer</MenuItem>
+          <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Job Seeker</MenuItem>
+          <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
         </Select>
       </FormControl>
 
