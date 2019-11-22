@@ -33,58 +33,68 @@ const useStyles = makeStyles(theme => ({
 
 
 
-function Signup(props){
+function Signup(props) {
 
     const classes = useStyles();
-    const [type, setType] = React.useState('');
+    const [type, setType] = useState('');
     const handleChange = event => {
       setType(event.target.value);
     };
 
-    const [newUser, setNewUser] = useState({
-        name: '',
-        email: '',
-        job: '',
-        password: '',
-        type: ''
+    const [newCOM, setNewCOM] = useState({
+        company_name: '',
+        company_email: '',
+        password: ''
+    })
 
+    const [newEMP, setNewEMP] = useState({
+      name: '',
+      email: '',
+      dream_job: '',
+      password: ''
     })
 
     const handleChanges = (e) => {
-        setNewUser({
-            ...newUser,
-            [e.target.name]: e.target.value,
+        setNewCOM({
+          ...newCOM,
+          [e.target.name]: e.target.value
+        })
+        setNewEMP({
+          ...newEMP,
+          [e.target.name]: e.target.value
         })
     }
-    const handleSubmittee = (e) => {     
+    const handleSubmittee = (e) => {
+      e.preventDefault();
       api()
-          .post("/auth/seeker/register")
+          .post("/auth/seeker/register", newEMP)
           .then(res => {
-            props.history.push('/seeker/account')            
+            console.log(res)
+            localStorage.setItem('token', res.data.token)
+            props.history.push('/company/dashboard')
           })
           .catch(err => {
               console.log(err)
           })
+        }
+
+  const handleSubmitter = (e) => {
+    e.preventDefault();
+    api()
+        .post("/auth/company/register", newCOM)
+        .then(res => {
+          console.log(res)
+          localStorage.setItem('token', res.data.token)
+          props.history.push('/company/dashboard')
+        })
+        .catch(err => {
+            console.log(err)
+        })
   }
 
-    const handleSubmitter = (e) => {       
-        api()
-            .post("/auth/company/register")
-            .then(res => {
-              props.history.push('/company/listing')           
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }
-
+  {if (type === 'employer') {
     return (
-        <>
-        <form onSubmit={type === 'employee' ? handleSubmittee : handleSubmitter}>
-            <h1>Sign Up</h1>
-
-      {/* TODO: User has to select an account type for the signup button to be active */}
-
+      <>
       <FormControl className={classes.formControl}>
         <Select value={type} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
           <MenuItem value="" disabled>
@@ -94,65 +104,133 @@ function Signup(props){
           <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
         </Select>
       </FormControl>
-        <br />
-        <TextField
-            id="outlined-basic"
-            className={classes.textField}
-            label="Name"
-            type='text'
-            name='name'
-            margin="normal"
-            variant="outlined"
-            value={newUser.name}
-            onChange={handleChanges}
-        />
-          <br />
-        {/* <TextField
-            id="outlined-basic"
-            className={classes.textField}
-            label="Dream Job"
-            type='text'
-            name='job'
-            margin="normal"
-            variant="outlined"
-            value={newUser.dreamJob}
-            onChange={handleChanges}
-        /> */}
-        <br />
-        <TextField
-            id="outlined-basic"
-            className={classes.textField}
-            label="Email"
-            margin="normal"
-            variant="outlined"
-            type='email' 
-            name='email' 
-            placeholder='Email'
-            value={newUser.email}
-            onChange={handleChanges}                
-        />
-          <br />
-          
-        
-        <TextField
-            id="outlined-basic"
-            className={classes.textField}
-            label="Password"
-            margin="normal"
-            variant="outlined"
-            type='password' 
-            name='password' 
-            placeholder='Password' 
-            value={newUser.password}
-            onChange={handleChanges}
-        />
-        <br />
-
-        {/* TODO: On click, the user will be redirected to either JobSeekerForm or JobListingForm */}
-        <Button type='submit' variant='contained' color='primary'>Sign Up</Button>
-        </form>
-        </>
-    )
+      <form onSubmit={type === 'employee' ? handleSubmittee : handleSubmitter}>
+      <h1>Sign Up</h1>
+     <br />
+     <TextField
+     id="outlined-basic"
+     className={classes.textField}
+     label="Company Name"
+     type='text'
+     name='company_name'
+     margin="normal"
+     variant="outlined"
+     value={newCOM.company_name}
+     onChange={handleChanges}
+     />
+     <br />
+     <TextField
+     id="outlined-basic"
+     className={classes.textField}
+     label="Company Email"
+     type='text'
+     name='company_email'
+     margin="normal"
+     variant="outlined"
+     value={newCOM.company_email}
+     onChange={handleChanges}
+     />
+     <br />
+     <TextField
+     id="outlined-basic"
+     className={classes.textField}
+     label="Password"
+     margin="normal"
+     variant="outlined"
+     type='password' 
+     name='password' 
+     placeholder='Password' 
+     value={newCOM.password}
+     onChange={handleChanges}
+     />
+     <br />
+    <Button type='submit' variant='contained' color='primary'>Sign Up</Button>
+    </form>
+     </>)
+   } else if (type === 'employee') {
+     return (
+      <>
+      <FormControl className={classes.formControl}>
+        <Select value={type} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
+          <MenuItem value="" disabled>
+            Select Account Type
+          </MenuItem>
+          <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Job Seeker</MenuItem>
+          <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
+        </Select>
+      </FormControl>
+      <form onSubmit={type === 'employee' ? handleSubmittee : handleSubmitter}>
+      <h1>Sign Up</h1>
+      <br />
+      <TextField
+        id="outlined-basic"
+        className={classes.textField}
+        label="Name"
+        type='text'
+        name='name'
+        margin="normal"
+        variant="outlined"
+        value={newEMP.name}
+        onChange={handleChanges}
+      />
+      <br />
+      <TextField
+        id="outlined-basic"
+        className={classes.textField}
+        label="Dream Job"
+        type='text'
+        name='dream_job'
+        margin="normal"
+        variant="outlined"
+        value={newEMP.dream_job}
+        onChange={handleChanges}
+      />
+      <br />
+      <TextField
+          id="outlined-basic"
+          className={classes.textField}
+          label="Email"
+          margin="normal"
+          variant="outlined"
+          type='email' 
+          name='email' 
+          placeholder='Email'
+          value={newEMP.email}
+          onChange={handleChanges}                
+          />
+      <br />
+      <TextField
+          id="outlined-basic"
+          className={classes.textField}
+          label="Employee Password"
+          margin="normal"
+          variant="outlined"
+          type='password' 
+          name='password' 
+          placeholder='Password' 
+          value={newEMP.password}
+          onChange={handleChanges}
+          />
+      <br />
+      <Button type='submit' variant='contained' color='primary'>Sign Up</Button>
+      </form>
+      </>
+   )
+   } else {
+     return (
+       <>
+        <FormControl className={classes.formControl}>
+        <Select value={type} onChange={handleChange} displayEmpty className={classes.selectEmpty}>
+          <MenuItem value="" disabled>
+            Select Account Type</MenuItem>
+          <MenuItem value='employee'><span role='img' aria-label="employee">👨🏿‍💼</span> Job Seeker</MenuItem>
+          <MenuItem value='employer'><span role='img' aria-label="company">🏢</span> Employer</MenuItem>
+        </Select>
+        </FormControl>
+    </>
+      )
+   } }
+    
 }
 
 //test test

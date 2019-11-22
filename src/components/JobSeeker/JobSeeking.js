@@ -5,7 +5,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 function JobSearch() {
     return(
         <>
-            <img src="http://lorempixel.com/400/400/business" /> {/* random image */}
+            <img src="http://lorempixel.com/400/400/business" alt='person' /> {/* random image */}
             
             <form>
                 <h1>Job Title</h1>
