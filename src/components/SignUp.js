@@ -107,7 +107,7 @@ function Signup(props){
             onChange={handleChanges}
         />
           <br />
-        {/* <TextField
+        <TextField
             id="outlined-basic"
             className={classes.textField}
             label="Dream Job"
@@ -117,7 +117,7 @@ function Signup(props){
             variant="outlined"
             value={newUser.dreamJob}
             onChange={handleChanges}
-        /> */}
+        />
         <br />
         <TextField
             id="outlined-basic"

@@ -10,7 +10,6 @@ import Account from './Account';
 import { getToken } from '../utils/api';
 import ProtectedRoute from '../utils/ProtectedRoute';
 import SeekerForm from './JobSeeker/JobSeekerForm';
-import MainPage from './MainPage';
 import Logout from './logout';
 import CompanyMatches from './Company/MatchPage';
 import JobSeekerMatches from './JobSeeker/MatchPage';

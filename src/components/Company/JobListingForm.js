@@ -1,28 +1,52 @@
-import React from 'react';
+import React from "react";
+import api from '../../utils/api';
+import JobCard from "./JobCard";
 
-// Company creates and removes job listings
+ class ListingForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      job: null
+    };
+  }
 
-function ListingForm() {
+  componentDidMount() {
+    this.fetchJob(this.props.match.params.id);
+  }
+
+  getDerivedStateFromProps(newProps) {
+    if (this.props.match.params.id !== newProps.match.params.id) {
+      this.fetchJob(newProps.match.params.id);
+    }
+  }
+
+  fetchJob = id => {
+    api()
+      .get(`/api/company/2/jobs`)
+      .then(res => this.setState({ job: res.data }))
+      .catch(err => console.log(err.response));
+  };  
+
+  updateJob = () => {
+    this.props.history.push({
+      pathname:`/update-job/${this.state.job.id}`,
+      state: { job: this.state.job }
+  })}
+
+  render() {
+    if (!this.state.job) {
+      return <div>Loading Job information...</div>;
+    }
+
     return (
-        <>
-        <form>
-            <h1>Create a listing</h1>
-            <div>
-                <h3>Current Listings</h3>
-                <h4>joblisting.map(eventually)</h4>
-                <h4>joblisting.map(eventually)</h4>
-                <h4>joblisting.map(eventually)</h4>
-            </div>
-            <input type='text' name='title' placeholder='Job Title' />
-            <br />
-            <textarea name='description' placeholder='Description'></textarea>
-            <br />
-            <textarea name='requirements' placeholder='Requirements'></textarea>
-            <br />
-            <button type='submit'>Submit</button>
-        </form>
-        </>
-    )
+      <div >
+        <JobCard job={this.state.job} />        
+        <button  onClick={this.updateJob}>
+          Update
+        </button>
+      </div>
+    );
+  }
 }
 
-export default ListingForm
+export default ListingForm;
