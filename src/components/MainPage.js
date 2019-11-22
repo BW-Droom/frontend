@@ -1,7 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
 
-
 function MainPage() {
 
     return (

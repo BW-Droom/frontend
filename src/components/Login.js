@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 function Signin(props) {
 
     const classes = useStyles();
-    const [type, setType] = React.useState('');
+    const [type, setType] = useState('');
   
     const handleChange = event => {
       setType(event.target.value);
@@ -60,6 +60,7 @@ function Signin(props) {
           .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('seeker', res.data)
             props.history.push('/seeker/dashboard')
           })
           .catch(err => {
@@ -74,6 +75,7 @@ function Signin(props) {
             .then(res => {
               console.log(res)
               localStorage.setItem('token', res.data.token)
+              localStorage.setItem('company', res.data)
               props.history.push('/company/dashboard')
             })
             .catch(err => {

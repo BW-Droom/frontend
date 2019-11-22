@@ -1,6 +1,23 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
+export function ProtectedRouteR(props) {
+
+    const {
+        componet: Componet,
+        ...rest
+    } = props
+
+    return (
+        <Route {...rest} render={(renderProps) => {
+            if (localStorage.getItem("token") && localStorage.getItem('company')) {
+                return <Componet {...renderProps} />
+            } else {
+                return <Redirect to="/signin" />
+            }
+        }} />
+    )
+}
 
 export function ProtectedRouteE(props) {
 
@@ -11,26 +28,7 @@ export function ProtectedRouteE(props) {
 
     return (
         <Route {...rest} render={(renderProps) => {
-            if (localStorage.getItem("token") && props.type === 'employee') {
-
-                return <Componet {...renderProps} />
-            } else {
-                return <Redirect to="/signin" />
-            }
-        }} />
-    )
-}
-
-export function ProtectedRouteR(props) {
-
-    const {
-        componet: Componet,
-        ...rest
-    } = props
-
-    return (
-        <Route {...rest} render={(renderProps) => {
-            if (localStorage.getItem("token") && props.type === 'employer') {
+            if (localStorage.getItem("token") && localStorage.getItem('seeker')) {
                 return <Componet {...renderProps} />
             } else {
                 return <Redirect to="/signin" />
