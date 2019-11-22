@@ -7,7 +7,7 @@ import CompanySwiping from './Company/Dashboard';
 import ListingForm from './Company/JobListingForm';
 import Account from './Account';
 import { getToken } from '../utils/api';
-import { ProtectedRouteE, ProtectedRouteR } from '../utils/ProtectedRoute';
+import { ProtectedRouteE, ProtectedRouteR, ProtectedRoute } from '../utils/ProtectedRoute';
 import SeekerForm from './JobSeeker/JobSeekerForm';
 import Logout from './logout';
 import CompanyMatches from './Company/MatchPage';
@@ -15,6 +15,7 @@ import JobSeekerMatches from './JobSeeker/MatchPage';
 
 function Nav(props) {
     const signedIn = getToken()
+    const seeker = props.type === 'employee'
 
     return(
         <>
@@ -27,19 +28,18 @@ function Nav(props) {
         <nav>
             {!signedIn && <Link to='/'>Home</Link>}
 
-            {signedIn && <Link to='/seeker/dashboard'>Dashboard</Link>}
-            {signedIn && <Link to='/seeker/matches'>Your Matches</Link>}
-            {signedIn && <Link to='/seeker/dreamjob'>Dream Job</Link>}
-            {signedIn && <Link to='/seeker/account'>Account</Link>}
+            {seeker && signedIn && <Link to='/seeker/dashboard'>Dashboard</Link>}
+            {seeker && signedIn && <Link to='/seeker/matches'>Your Matches</Link>}
+            {seeker && signedIn && <Link to='/seeker/dreamjob'>Dream Job</Link>}
+            {seeker && signedIn && <Link to='/seeker/account'>Account</Link>}
 
-            {signedIn && <Link to='/company/dashboard'>Dashboard</Link>}
-            {signedIn && <Link to='/company/matches'>Your Matches</Link>}
-            {signedIn && <Link to='/company/listing'>Create a Listing</Link>}
+            {!seeker && signedIn && <Link to='/company/dashboard'>Dashboard</Link>}
+            {!seeker && signedIn && <Link to='/company/matches'>Your Matches</Link>}
+            {!seeker && signedIn && <Link to='/company/listing'>Create a Listing</Link>}
 
             {!signedIn && <Link to='/signin'>Sign in</Link>}
             {!signedIn && <Link to='/signup'>Sign up</Link>}
-            {signedIn && <Link to='/seeker/logout'>Log Out</Link>}
-            {signedIn && <Link to='/company/logout'>Log Out</Link>}
+            {signedIn && <Link to='/logout'>Log Out</Link>}
         </nav>
 
         </div>
@@ -57,9 +57,7 @@ function Nav(props) {
         <ProtectedRouteR exact path='/company/matches' component={CompanyMatches} />
         <ProtectedRouteR exact path='/company/listing' component={ListingForm} />
 
-        <ProtectedRouteR exact path='/company/logout' component={Logout} />
-        <ProtectedRouteE exact path='/seeker/logout' component={Logout} />
-
+        <ProtectedRoute exact path='/logout' component={Logout} />
         </>
     )
 }

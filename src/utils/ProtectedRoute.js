@@ -38,3 +38,21 @@ export function ProtectedRouteR(props) {
         }} />
     )
 }
+
+export function ProtectedRoute(props) {
+
+    const {
+        componet: Componet,
+        ...rest
+    } = props
+
+    return (
+        <Route {...rest} render={(renderProps) => {
+            if (localStorage.getItem("token")) {
+                return <Componet {...renderProps} />
+            } else {
+                return <Redirect to="/signin" />
+            }
+        }} />
+    )
+}
