@@ -1,8 +1,7 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-
-function ProtectedRoute(props) {
+export function ProtectedRoute(props) {
 
     const {
         componet: Componet,
@@ -11,7 +10,7 @@ function ProtectedRoute(props) {
 
     return (
         <Route {...rest} render={(renderProps) => {
-            if (localStorage.getItem("token") && (props.type === 'employee')) {
+            if (localStorage.getItem("token")) {
                 return <Componet {...renderProps} />
             } else {
                 return <Redirect to="/signin" />
@@ -19,5 +18,3 @@ function ProtectedRoute(props) {
         }} />
     )
 }
-
-export default ProtectedRoute;

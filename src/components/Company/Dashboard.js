@@ -1,28 +1,39 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import JobList from "./JobList";
-import ListingForm from "./JobListingForm";
-import UpdateJobs from './UpdateJobs';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchEmployee } from '../actions/getEmployees';
 
+function CompanySwiping(props) {
 
-// Company swipes thru job seekers
-
-function CompanySwiping() {
+    useEffect(() => {
+      props.fetchEmployee();
+    }, []);
+    console.log(props.employee)
     return(
         <>
-        <Route exact path="/company/" component={JobList} />
-      <Route 
-        path='/update-job/:id' 
-        render={props => {
-        return <UpdateJobs {...props}/>}}  />
-      <Route
-        path="/jobs/:id"
-        render={props => {
-          return <ListingForm {...props} />;     
-        }}
-      />
-      </>
+        {props.employee.employee.employees.map(employee => {
+          return (
+            <div>
+              <h1>{employee.name}</h1>
+              <p>{employee.email}</p>
+              <p>{employee.experience}</p>
+            </div>
+          )
+        })}
+        </>
     )
 }
 
-export default CompanySwiping
+function mapStateToProps(state) {
+    return {
+      employee: state
+    }
+  }
+  
+  const mapDispatchToProps = {
+    fetchEmployee
+  }
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CompanySwiping);  
