@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
+import { Link } from "react-router-dom"
 
 function Account(props) {
     const [userProfile,setUserProfile] = useState({
@@ -12,7 +13,7 @@ function Account(props) {
 
     useEffect(() => {
         api()
-            .get('/api/seeker/4')
+            .get(`/api/seeker/4`)
             .then(res => {
                 console.log(res)
                 setUserProfile({
@@ -27,6 +28,7 @@ function Account(props) {
                 console.log(err)
             })
     }, [])
+
     return(
         <>
         <h3>Name: {userProfile.name}</h3>
@@ -34,7 +36,7 @@ function Account(props) {
         <h3>Occupation: {userProfile.occupation}</h3>
         <h3>Experience: {userProfile.experience}</h3>
         <h3>Dream Job: {userProfile.droom}</h3>
-        <button>Edit</button>
+        <button><Link to='/seeker/edit'>Edit</Link></button>
         </>
     )
 }
