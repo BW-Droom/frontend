@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchEmployee } from '../actions/getEmployees';
 
-// Company swipes thru job seekers
+function CompanySwiping(props) {
 
-function CompanySwiping() {
+    useEffect(() => {
+      props.fetchEmployee();
+    }, []);
+    console.log(props.employee)
     return(
-        <>
-        <h1>Name</h1>
-        <p>Description</p>
-        <p>Qualifications</p>
-        </>
+        <div>
+        {props.employee.employee.employees.map(employee => {
+          return (
+            <div>
+              <h1>{employee.name}</h1>
+              <p>Email: {employee.email}</p>
+              <p>Experience: {employee.experience}</p>
+              <p>Current Job: {employee.occupation}</p>
+            </div>
+          )
+        })}
+        </div>
     )
 }
 
-export default CompanySwiping
+function mapStateToProps(state) {
+    return {
+      employee: state
+    }
+  }
+  
+  const mapDispatchToProps = {
+    fetchEmployee
+  }
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(CompanySwiping);  

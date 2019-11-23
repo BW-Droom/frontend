@@ -11,7 +11,8 @@ export function fetchEmployee() {
         api()
             .get(`/api/seeker`)
             .then(res => {
-                dispatch({ type: FETCH_EMPLOYEE_PASS, payload: res.data.message })
+                console.log(res)
+                dispatch({ type: FETCH_EMPLOYEE_PASS, payload: res.data })
             })
             .catch(err => {
                 dispatch({ type: FETCH_EMPLOYEE_FAIL, payload: err });

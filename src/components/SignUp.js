@@ -71,6 +71,7 @@ function Signup(props) {
           .then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
+            localStorage.setItem('seeker', res.data)
             props.history.push('/company/dashboard')
           })
           .catch(err => {
@@ -85,6 +86,7 @@ function Signup(props) {
         .then(res => {
           console.log(res)
           localStorage.setItem('token', res.data.token)
+          localStorage.setItem('company', res.data)
           props.history.push('/company/dashboard')
         })
         .catch(err => {

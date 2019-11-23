@@ -1,12 +1,8 @@
 import { FETCH_EMPLOYEE_START, FETCH_EMPLOYEE_PASS, FETCH_EMPLOYEE_FAIL } from '../actions/getEmployees';
 
 const initialState = {
-    id: null,
-    name: null,
-    email: null,
-    occupation: null,
-    expierence: null,
-    dream_job: null
+    employees: [],
+    error: ''
 };
 
 export function reducer(state = initialState, action) {
@@ -18,16 +14,12 @@ export function reducer(state = initialState, action) {
         case FETCH_EMPLOYEE_PASS:
             return {
                 ...state,
-                name: action.payload.name,
-                email: action.payload.email,
-                occupation: action.payload.occupation,
-                expierence: action.payload.expierence,
-                dream_job: action.payload.dream_job
+                employees: action.payload
             }
         case FETCH_EMPLOYEE_FAIL:
             return {
                 ...state,
-                dog: action.payload,
+                error: action.payload,
             }
         default:
             return state

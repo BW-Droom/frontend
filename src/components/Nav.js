@@ -5,7 +5,7 @@ import Signin from './Login';
 import SeekerSwiping from './JobSeeker/Dashboard';
 import Account from './Account';
 import { getToken } from '../utils/api';
-import { ProtectedRoute, ProtectedRouteE, ProtectedRouteR } from '../utils/ProtectedRoute';
+import { ProtectedRoute } from '../utils/ProtectedRoute';
 import SeekerForm from './JobSeeker/JobSeekerForm';
 import Logout from './logout';
 import JobSeekerMatches from './JobSeeker/MatchPage';

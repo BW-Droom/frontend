@@ -1,4 +1,5 @@
 import React from 'react';
+import ListingList from './Listings';
 
 // Company creates and removes job listings
 
@@ -6,12 +7,11 @@ function ListingForm() {
     return (
         <>
         <form>
+
             <h1>Create a listing</h1>
             <div>
                 <h3>Current Listings</h3>
-                <h4>joblisting.map(eventually)</h4>
-                <h4>joblisting.map(eventually)</h4>
-                <h4>joblisting.map(eventually)</h4>
+                <ListingList />
             </div>
             <input type='text' name='title' placeholder='Job Title' />
             <br />
