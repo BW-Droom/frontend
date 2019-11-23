@@ -1,4 +1,7 @@
-import { FETCH_EMPLOYEE_START, FETCH_EMPLOYEE_PASS, FETCH_EMPLOYEE_FAIL } from '../actions/getEmployees';
+import { FETCH_EMPLOYEE_START, 
+         FETCH_EMPLOYEE_PASS, 
+         FETCH_EMPLOYEE_FAIL 
+        } from '../actions/getEmployees';
 
 const initialState = {
     employees: [],

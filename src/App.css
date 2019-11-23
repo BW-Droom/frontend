@@ -36,6 +36,32 @@
   width: 100%;
   height: 130px;
 }
+.listing {
+  display: flex;
+  margin: 5px;
+}
+.jobedit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+.addform {
+  margin: 5px;
+}
+.jobcontainer {
+  width: 75%;
+  margin: 25px;
+  
+}
+.titlespace {
+  margin: 20px;
+}
+
+.listingview {
+  display: flex;
+  flex-direction: column;  
+}
 
 a {
   text-decoration: none;
