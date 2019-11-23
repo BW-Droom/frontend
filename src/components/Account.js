@@ -7,20 +7,20 @@ function Account(props) {
         email: '',
         occupation: '',
         experience: '',
-        droom: '',
-        password: '',
+        droom: ''
     })
+
     useEffect(() => {
         api()
-            .get('#')
+            .get('/api/seeker/4')
             .then(res => {
+                console.log(res)
                 setUserProfile({
                     name: res.data.name,
                     email: res.data.email,
                     occupation: res.data.occupation,
                     experience: res.data.experience,
-                    droom: res.data.droom,
-                    password: res.data.password
+                    droom: res.data.dream_job,
                 })
             })
             .catch(err => {
@@ -30,10 +30,10 @@ function Account(props) {
     return(
         <>
         <h3>Name: {userProfile.name}</h3>
-        <h3>Age: {userProfile.age}</h3>
+        <h3>Email: {userProfile.email}</h3>
         <h3>Occupation: {userProfile.occupation}</h3>
-        <h3>Interests: {userProfile.droom}</h3>
-        <h3>Dream Job: Software Developer</h3>
+        <h3>Experience: {userProfile.experience}</h3>
+        <h3>Dream Job: {userProfile.droom}</h3>
         <button>Edit</button>
         </>
     )
