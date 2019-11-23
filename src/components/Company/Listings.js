@@ -4,15 +4,14 @@ import api from '../../utils/api';
 function ListingList(props) {
     const [jobs, setJobs] = useState([
         {
-        id: null,
         job_title: '',
         description: ''
         }
     ])
-
-    useEffect((props) => {
+    console.log(props)
+    useEffect(() => {
         api()
-            .get(`/api/company/3/jobs`)
+            .get(`/api/company/4/jobs`)
             .then(res => {
                 console.log(res)
                 setJobs(res.data)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
-import { Link, Route, withRouter } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 function Account(props) {
     const [userProfile,setUserProfile] = useState({
@@ -13,7 +13,7 @@ function Account(props) {
 
     useEffect(() => {
         api()
-            .get('/api/seeker/4')
+            .get(`/api/seeker/4`)
             .then(res => {
                 console.log(res)
                 setUserProfile({
@@ -28,11 +28,6 @@ function Account(props) {
                 console.log(err)
             })
     }, [])
-
-    // function handleClick(e) {
-    //     e.preventDefault()
-    //     EditACC()
-    // }
 
     return(
         <>
