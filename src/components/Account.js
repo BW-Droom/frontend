@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
+import EditACC from './JobSeeker/EditAccount';
 
 function Account(props) {
     const [userProfile,setUserProfile] = useState({
@@ -34,7 +35,7 @@ function Account(props) {
         <h3>Occupation: {userProfile.occupation}</h3>
         <h3>Experience: {userProfile.experience}</h3>
         <h3>Dream Job: {userProfile.droom}</h3>
-        <button>Edit</button>
+        <button onClick={() => EditACC}>Edit</button>
         </>
     )
 }
