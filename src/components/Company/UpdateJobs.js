@@ -8,6 +8,7 @@ function UpdateJobs(props) {
         title: '',
         description: '',        
     })
+    const id =props.match.params.id;
 
     useEffect(() => {
         api()
@@ -19,7 +20,7 @@ function UpdateJobs(props) {
                 console.log(err)
             })
             
-    },)
+    },[props.match.params.id])
 
     const handleChange = (e) => {
         setJobs({
@@ -33,7 +34,7 @@ function UpdateJobs(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         api()
-        .put(`/api/company/${props.match.params.id}/jobs${jobs.id}`, jobs)
+        .put(`/api/company/${id}/jobs${jobs.id}`, jobs)
         .then(res => {
             props.history.push('/')
         })
