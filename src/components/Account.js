@@ -29,11 +29,11 @@ function Account(props) {
     }, [])
     return(
         <>
-        <h1>Name: {userProfile.name}</h1>
-        <h1>Age: {userProfile.age}</h1>
-        <h1>Occupation: {userProfile.occupation}</h1>
-        <h1>Interests: {userProfile.droom}</h1>
-        <h1>Dream Job: Software Developer</h1>
+        <h3>Name: {userProfile.name}</h3>
+        <h3>Age: {userProfile.age}</h3>
+        <h3>Occupation: {userProfile.occupation}</h3>
+        <h3>Interests: {userProfile.droom}</h3>
+        <h3>Dream Job: Software Developer</h3>
         <button>Edit</button>
         </>
     )

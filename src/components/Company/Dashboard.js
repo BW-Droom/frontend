@@ -23,7 +23,6 @@ function CompanySwiping(props) {
         </div>
     )
 }
-
 function mapStateToProps(state) {
     return {
       employee: state
