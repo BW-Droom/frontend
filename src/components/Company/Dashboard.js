@@ -17,6 +17,7 @@ function CompanySwiping(props) {
               <p>{employee.email}</p>
               <p>{employee.experience}</p>
             </div>
+            
           )
         })}
         </>
