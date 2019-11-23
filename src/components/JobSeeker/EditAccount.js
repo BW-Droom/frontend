@@ -34,10 +34,15 @@ function EditACC(props) {
 
         <form onSubmit={handleSubmit}>
             <input type='text' name='name' placeholder='Name' value={newUserProfile.name} onChange={handleChange} />
+            <br />
             <input type='email' name='email' placeholder='Email' value={newUserProfile.email} onChange={handleChange} />
-            <input type='text' name='occupation' placeholder='Email' value={newUserProfile.occupation} onChange={handleChange} />
-            <input type='text' name='experience' placeholder='Email' value={newUserProfile.experience} onChange={handleChange} />
-            <input type='text' name='dream_job' placeholder='Email' value={newUserProfile.dream_job} onChange={handleChange} />
+            <br />
+            <input type='text' name='occupation' placeholder='Occupation' value={newUserProfile.occupation} onChange={handleChange} />
+            <br />
+            <input type='text' name='experience' placeholder='Experience' value={newUserProfile.experience} onChange={handleChange} />
+            <br />
+            <input type='text' name='dream_job' placeholder='Dream Job' value={newUserProfile.dream_job} onChange={handleChange} />
+            <br />
             <button type='submit'>Save</button>
         </form>
         </>

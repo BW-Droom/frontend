@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../utils/api';
-import EditACC from './JobSeeker/EditAccount';
+import { Link, Route, withRouter } from "react-router-dom"
 
 function Account(props) {
     const [userProfile,setUserProfile] = useState({
@@ -28,6 +28,12 @@ function Account(props) {
                 console.log(err)
             })
     }, [])
+
+    // function handleClick(e) {
+    //     e.preventDefault()
+    //     EditACC()
+    // }
+
     return(
         <>
         <h3>Name: {userProfile.name}</h3>
@@ -35,7 +41,7 @@ function Account(props) {
         <h3>Occupation: {userProfile.occupation}</h3>
         <h3>Experience: {userProfile.experience}</h3>
         <h3>Dream Job: {userProfile.droom}</h3>
-        <button onClick={() => EditACC}>Edit</button>
+        <button><Link to='/seeker/edit'>Edit</Link></button>
         </>
     )
 }
