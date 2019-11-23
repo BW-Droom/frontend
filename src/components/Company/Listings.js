@@ -42,13 +42,14 @@
 
 import React from "react";
 import { connect } from 'react-redux';
-import { deleteJob } from '../actions/addJob';
+import { deleteJob } from '../actions/index';
 import Job from './Job';
 
 function List(props) {
-
+    console.log(props)
   return (
     <>
+    
       {props.jobs.map(job => (
        <Job
        job={job}

@@ -10,8 +10,11 @@ import {
     EDIT_JOB_SUCCESS,
     DELETE_JOB_FAILURE,
     DELETE_JOB_START,
-    DELETE_JOB_SUCCESS
-  } from "../actions/addJob";
+    DELETE_JOB_SUCCESS,
+    FETCH_EMPLOYEE_START, 
+    FETCH_EMPLOYEE_PASS, 
+    FETCH_EMPLOYEE_FAIL
+  } from "../actions/index";
 
   const initialState = {
     jobs: [],
@@ -21,6 +24,20 @@ import {
 
   export default function reducer(state = initialState, action){
     switch (action.type) {
+        case FETCH_EMPLOYEE_START:
+            return {
+                ...state
+            }
+        case FETCH_EMPLOYEE_PASS:
+            return {
+                ...state,
+                employees: action.payload
+            }
+        case FETCH_EMPLOYEE_FAIL:
+            return {
+                ...state,
+                error: action.payload,
+            }
       case FETCH_JOBS_START:
         return {
           ...state,

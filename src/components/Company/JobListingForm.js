@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addJob, editJob } from "../actions/addJob";
+import { addJob, editJob } from "../actions/index";
 import EditJobForm from './EditJob';
 import { connect } from "react-redux";
 import ListView from './showList'
@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 class ListingForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props.job);
     this.state = {
       job_title: "",
       description: "", 

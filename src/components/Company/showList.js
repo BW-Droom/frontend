@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getJobs } from '../actions/addJob';
+import { getJobs } from '../actions/index';
 import List from '../Company/Listings';
 
 class ListView extends React.Component {
