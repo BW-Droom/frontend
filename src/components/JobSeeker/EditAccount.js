@@ -19,7 +19,7 @@ function EditACC(props) {
 
     const handleSubmit = (e) => {
         api()
-            .put(`/api/seeker/4`, newUserProfile)
+            .put(`/api/seeker/${props.params.match.id}`, newUserProfile)
             .then(res => {
                 props.history.push('/seeker/account')
             })
