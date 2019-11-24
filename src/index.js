@@ -5,7 +5,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
 //redux 
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 // import {reducer as employeeReducer} from './components/reducers/getEmployees';
 // import {reducer as jobsReducer} from './components/reducers/addJobs'
 import rootReducer from './components/reducers/index'

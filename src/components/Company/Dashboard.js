@@ -40,6 +40,7 @@
 //   )(CompanySwiping);  
 
 import React from "react";
+import ListView from './Employee/EmployeeShowList'
 
 
 function CompanySwiping(props) {
@@ -48,9 +49,7 @@ function CompanySwiping(props) {
   return (
     <>
         <div >
-          <h1>{props.employee.name}</h1>
-          <p>{props.employee.email}</p>
-          <p>{props.employee.experience}</p>   
+          <ListView />
         </div>
     </>
   );

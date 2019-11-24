@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getJobs } from '../actions/index';
-import List from '../Company/Listings';
+import { getJobs } from '../../actions/index';
+import List from '../../Company/Job/JobListingForm';
 
 class ListView extends React.Component {
     componentDidMount() {

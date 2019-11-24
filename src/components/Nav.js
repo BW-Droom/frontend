@@ -10,7 +10,7 @@ import SeekerForm from './JobSeeker/JobSeekerForm';
 import Logout from './logout';
 import JobSeekerMatches from './JobSeeker/MatchPage';
 import CompanySwiping from './Company/Dashboard';
-import ListingForm from './Company/JobListingForm';
+import ListingForm from './Company/Job/JobListingForm';
 import CompanyMatches from './Company/MatchPage';
 import EditACC from './JobSeeker/EditAccount';
 

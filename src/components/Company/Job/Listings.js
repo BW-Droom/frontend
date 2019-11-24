@@ -42,7 +42,7 @@
 
 import React from "react";
 import { connect } from 'react-redux';
-import { deleteJob } from '../actions/index';
+import { deleteJob } from '../../actions/index';
 import Job from './Job';
 
 function List(props) {
