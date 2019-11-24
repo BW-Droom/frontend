@@ -18,6 +18,25 @@
   margin: 0px;
   
 }
+.noMatch {
+  background-color: red;
+  height: 200px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 200%;
+}
+.match {
+  background-color: green;
+  height: 200px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.swipingContainer {
+  width: 500px;
+}
 .email {
   display: flex;
   justify-content: center;

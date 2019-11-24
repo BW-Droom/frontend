@@ -1,21 +1,3 @@
-// import React from "react";
-
-
-// function Employee(props) {
-//   //console.log('rendering')
-
-//   return (
-//     <>
-//         <div className='swipingCard' >
-//           Name: {props.employee.name} <br />   
-//           Email: {props.employee.email} <br/>       
-//           Experience: {props.employee.experience} <br/><br/>    
-//         </div>
-//     </>
-//   );
-// }
-
-// export default Employee
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -25,6 +7,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { SwipeableList, SwipeableListItem } from '@sandstreamdev/react-swipeable-list';
+import '@sandstreamdev/react-swipeable-list/dist/styles.css';
 
 const useStyles = makeStyles({
   card: {
@@ -43,6 +27,20 @@ export default function Employee(props) {
   const classes = useStyles();
 
   return (
+    <div>
+
+<SwipeableList className='swipingContainer'>
+  <SwipeableListItem
+  className='swipingContainer'
+    swipeLeft={{
+      content: <h1 className='noMatch'>This is not a match</h1>,
+      action: () => console.info('swipe action triggered')
+    }}
+    swipeRight={{
+      content: <h1 className='match'>This is a match</h1>,
+      action: () => console.info('swipe action triggered')
+    }}
+  >
     <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
@@ -71,5 +69,10 @@ export default function Employee(props) {
         </Button>
       </CardActions>
     </Card>
+  </SwipeableListItem>
+</SwipeableList>
+    
+    </div>
+    
   );
 }
