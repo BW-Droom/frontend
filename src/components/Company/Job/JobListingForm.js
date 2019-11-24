@@ -1,5 +1,5 @@
 import React from "react";
-import { addJob } from "../../actions/index";
+import { addJob } from "../../store/actions/index";
 import EditJobForm from './EditJob';
 import { connect } from "react-redux";
 import ListView from './showList'

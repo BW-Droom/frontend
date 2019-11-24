@@ -1,4 +1,4 @@
-import api from "../../utils/api";
+import api from "../../../utils/api";
 
 export const FETCH_EMPLOYEE_START = "FETCH_EMPLOYEE_START"
 export const FETCH_EMPLOYEE_PASS = "FETCH_EMPLOYEE_PASS"

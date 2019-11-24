@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 .Logo {
   display: flex;
@@ -23,6 +24,7 @@
   align-items: center;
   
 }
+
 .signinForm {
   display: flex;
   flex-direction: column;
@@ -102,3 +104,4 @@ footer{
     text-align: center;
     margin-top:100px;
 }
+

@@ -18,20 +18,24 @@ import {
 
   const initialState = {
     jobs: [],
+    employees: [],
     error: null,
-    isFetchingJobs: false
+    isFetchingJobs: false,
+    isFetchingEmployees: false
   };
 
-  export default function reducer(state = initialState, action){
+  export default function reducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_EMPLOYEE_START:
             return {
-                ...state
+                ...state,
+                isFetchingEmployees: true
             }
         case FETCH_EMPLOYEE_PASS:
             return {
                 ...state,
-                employees: action.payload
+                employees: action.payload,
+                isFetchingEmployees: false
             }
         case FETCH_EMPLOYEE_FAIL:
             return {

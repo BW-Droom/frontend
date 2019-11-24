@@ -73,22 +73,36 @@ function Signin(props) {
           })
   }
 
-    const handleSubmitter = (e) => {
-        e.preventDefault();
-        api()
-            .post("/auth/company/login", userCredentials)
-            .then(res => {
-              setUserCredential({
-                ...userCredentials,
-                id: res.data.seeker.id
-              })
-              localStorage.setItem('token', res.data.token)
-              localStorage.setItem('company', res.data)
-              props.history.push('/company/dashboard')
-            })
-            .catch(err => {
-                console.log(err)
-            })
+    // const handleSubmitter = (e) => {
+    //     e.preventDefault();
+    //     api()
+    //         .post("/auth/company/login", userCredentials)
+    //         .then(res => {
+    //           setUserCredential({
+    //             ...userCredentials,
+    //             id: res.data.seeker.id
+    //           })
+    //           localStorage.setItem('token', res.data.token)
+    //           localStorage.setItem('company', res.data)
+    //           props.history.push('/company/dashboard')
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+  
+            const handleSubmitter = (e) => {
+              e.preventDefault();
+              api()
+                  .post("/auth/company/login", userCredentials)
+                  .then(res => {
+                    console.log(res)
+                    localStorage.setItem('token', res.data.token)
+                    localStorage.setItem('company', res.data)
+                    props.history.push('/company/dashboard')
+                  })
+                  .catch(err => {
+                      console.log(err)
+                  })
     }
     return(
         <>

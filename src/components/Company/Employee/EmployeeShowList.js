@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchEmployee } from '../../actions/index';
+import { fetchEmployee } from '../../store/actions/index';
 import List from './EmployeeListing';
 
-class ListView extends React.Component {
+class EmployeeListView extends React.Component {
     componentDidMount() {
         this.props.fetchEmployee();
     }
@@ -27,4 +27,4 @@ const mapStateToProps = state => ({
     error: state.error
 });
 
-export default connect(mapStateToProps, { fetchEmployee })(ListView);
+export default connect(mapStateToProps, { fetchEmployee })(EmployeeListView);

@@ -15,6 +15,7 @@ import {
 
   const initialState = {
     jobs: [],
+    employees: [],
     error: null,
     isFetchingJobs: false
   };
