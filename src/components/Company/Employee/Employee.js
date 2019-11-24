@@ -12,14 +12,15 @@ import '@sandstreamdev/react-swipeable-list/dist/styles.css';
 
 const useStyles = makeStyles({
   card: {
-    maxWidth: 500,
+    width: 500,
     margin: 'auto', 
-    marginBottom: 15
+    marginBottom: 25,
+    height: 450
 
 
   },
   media: {
-    height: 140,
+    height: 190,
   },
 });
 
@@ -60,12 +61,12 @@ export default function Employee(props) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-        {'\u274C'}
+      <CardActions className="actionButton">
+        <Button className="xButton" size="large" color="primary">
+        <img className="xButton" src="https://www.trzcacak.rs/myfile/full/51-515377_x-mark-transparent-background-png-x.png" alt="xmate" />
         </Button>
-        <Button size="small" color="primary">
-        {'\u2714'}
+        <Button className="checkButton" size="large" color="primary">
+        <img className="checkButton" src="https://www.pinclipart.com/picdir/big/105-1056029_checkmark-clipart-black-and-white-images-free-download.png" alt="checkmate" />
         </Button>
       </CardActions>
     </Card>

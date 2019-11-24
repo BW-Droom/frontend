@@ -20,15 +20,25 @@
 }
 .noMatch {
   background-color: red;
-  height: 200px;
+  height: 450px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   width: 200%;
 }
+.actionButton {
+  width: 100%;
+}
+.checkButton {
+  width: 50%;
+}
+.xButton {
+  width: 50%;
+  height: 75px;
+}
 .match {
   background-color: green;
-  height: 200px;
+  height: 450px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
