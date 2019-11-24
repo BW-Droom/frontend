@@ -103,7 +103,8 @@ import {
             ...state,
             isFetchingJobs: false,
             jobs: action.payload,
-            error: null
+            error: null,
+            onClick: window.location.reload()
         };
       case DELETE_JOB_FAILURE:
         return {

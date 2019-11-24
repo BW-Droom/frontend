@@ -4,14 +4,14 @@ import { Route, Redirect } from 'react-router-dom';
 export function ProtectedRoute(props) {
 
     const {
-        componet: Componet,
+        component: Component,
         ...rest
     } = props
 
     return (
         <Route {...rest} render={(renderProps) => {
             if (localStorage.getItem("token")) {
-                return <Componet {...renderProps} />
+                return <Component {...renderProps} />
             } else {
                 return <Redirect to="/signin" />
             }

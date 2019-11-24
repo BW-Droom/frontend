@@ -10,10 +10,10 @@ function Account(props) {
         experience: '',
         droom: ''
     })
-
+    
     useEffect(() => {
         api()
-            .get(`/api/seeker/4`)
+            .get(`/api/seeker/${props.match.params.id}`)
             .then(res => {
                 console.log(res)
                 setUserProfile({
@@ -28,6 +28,8 @@ function Account(props) {
                 console.log(err)
             })
     }, [])
+
+    console.log(props)
 
     return(
         <>

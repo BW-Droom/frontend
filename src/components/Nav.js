@@ -6,7 +6,6 @@ import SeekerSwiping from './JobSeeker/Dashboard';
 import Account from './Account';
 import { getToken } from '../utils/api';
 import { ProtectedRoute } from '../utils/ProtectedRoute';
-import SeekerForm from './JobSeeker/JobSeekerForm';
 import Logout from './logout';
 import JobSeekerMatches from './JobSeeker/MatchPage';
 import CompanySwiping from './Company/Dashboard';
@@ -14,10 +13,11 @@ import ListingForm from './Company/Job/JobListingForm';
 import CompanyMatches from './Company/MatchPage';
 import EditACC from './JobSeeker/EditAccount';
 
-function Nav() {
+function Nav(props) {
     const signedIn = getToken()
     const seeker = localStorage.getItem('seeker')
     const company = localStorage.getItem('company')
+    const id = props.match.params.id
 
     return(
         <>
@@ -32,8 +32,7 @@ function Nav() {
 
             {seeker && signedIn && <Link to='/seeker/dashboard'>Dashboard</Link>}
             {seeker && signedIn && <Link to='/seeker/matches'>Your Matches</Link>}
-            {seeker && signedIn && <Link to='/seeker/dreamjob'>Dream Job</Link>}
-            {seeker && signedIn && <Link to='/seeker/account'>Account</Link>}
+            {seeker && signedIn && <Link to={`/seeker/account/${id}`}>Account</Link>}
 
             {company && signedIn && <Link to='/company/dashboard'>Dashboard</Link>}
             {company && signedIn && <Link to='/company/matches'>Your Matches</Link>}
@@ -51,9 +50,8 @@ function Nav() {
 
         <ProtectedRoute exact path='/seeker/dashboard' component={SeekerSwiping} />
         <ProtectedRoute exact path='/seeker/matches' component={JobSeekerMatches} />
-        <ProtectedRoute exact path='/seeker/account' component={Account} />
-        <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
-        <ProtectedRoute exact path='/seeker/edit' component={EditACC} />
+        <ProtectedRoute path='/seeker/account/:id' component={Account} />
+        <ProtectedRoute exact path='/seeker/edit/:id' component={EditACC} />
 
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/matches' component={CompanyMatches} />
