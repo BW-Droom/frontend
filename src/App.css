@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 .Logo {
   display: flex;
@@ -17,12 +18,42 @@
   margin: 0px;
   
 }
+.noMatch {
+  background-color: red;
+  height: 450px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 200%;
+}
+.actionButton {
+  width: 100%;
+}
+.checkButton {
+  width: 50%;
+}
+.xButton {
+  width: 50%;
+  height: 75px;
+}
+.match {
+  background-color: green;
+  height: 450px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.swipingContainer {
+  width: 500px;
+}
 .email {
   display: flex;
   justify-content: center;
   align-items: center;
   
 }
+
 .signinForm {
   display: flex;
   flex-direction: column;
@@ -102,3 +133,4 @@ footer{
     text-align: center;
     margin-top:100px;
 }
+

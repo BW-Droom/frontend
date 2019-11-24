@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { addJob, editJob } from "../actions/index";
-import EditJobForm from './EditJob';
+import React from "react";
+import { editJob } from "../../store/actions/index";
 import { connect } from "react-redux";
-import ListView from './showList'
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
@@ -32,16 +30,14 @@ const useStyles = makeStyles(theme => ({
             width: 600,
           },
   }));
- 
 
-
-class ListingForm extends React.Component {
+class EditJobForm extends React.Component {
   constructor(props) {
-    super(props.job);
+    super(props);
     this.state = {
       job_title: "",
-      description: "", 
-         
+      description: "",      
+      id: ''
     };
   }
 
@@ -53,62 +49,65 @@ class ListingForm extends React.Component {
 
   submitHandler = event => {
     event.preventDefault();
-    this.props.addJob(this.state);
+    this.props.editJob(this.state.id, this.state);
     this.setState({
       job_title: "",
-      description: "", 
-          
+      description: "",      
+      id: '',
     });
+    // window.location.reload(true)
   };
+
   
   render() {
     return (
-      <div className='listing'>
-      <div>
-         <ListView/>
-      </div>
-      <div className='jobedit'>
-        <EditJobForm />
-        <form className='addform' onSubmit={this.submitHandler} >
+      <>
+        <form onSubmit={this.submitHandler} >
           <TextField
-            name='job_title'
             onChange={this.handleChange}
+            name='job_title'
             id="outlined-basic"
             className={this.textField}
             label="Job Title"
             margin="normal"
             variant="outlined"
             placeholder='Job Title' 
-            value={this.state.job_title}                      
+            value={this.state.title}
           />
-          <br/>         
+          <br/>
+           <TextField 
+            onChange={this.handleChange}
+            name='id'
+            id="outlined-basic"
+            className={this.textField}
+            label="Job Id"
+            margin="normal"
+            variant="outlined"
+            placeholder='Job Title'             
+            value={this.state.id}
+             />
+            <br/>
           <TextField
-            name='requirements'
+            onChange={this.handleChange}
+            name='description'
             id="outlined-multiline-static"
             label="Job Requirements"
             multiline rows="4"                
             className={this.wideTextField}
             margin="normal"
-            variant="outlined"            
-            onChange={this.handleChange}
-            type="text"
-            name="description"
+            variant="outlined"
             value={this.state.description}
-            placeholder="Job Description"
-            
-          />
-          <br/>          
-          <Button type='submit' variant='contained' color='primary'>Add Job</Button>
+          />      
+          <br/>    
+         
+          <Button type='submit' variant='contained' color='primary'>Edit Job</Button>
         </form>
-      </div>
-     
-      
-      </div>
+      </>
     );
   }
 }
 
 export default connect(
   null,
-  { addJob }
-)(ListingForm);
+  { editJob }
+)(EditJobForm);

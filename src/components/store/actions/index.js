@@ -1,4 +1,4 @@
-import api from '../../utils/api'
+import api from '../../../utils/api'
 
 export const FETCH_JOBS_START = "FETCH_JOBS_START";
 export const FETCH_JOBS_SUCCESS = "FETCH_JOBS_SUCCESS";
@@ -19,7 +19,6 @@ export const FETCH_EMPLOYEE_FAIL = "FETCH_EMPLOYEE_FAIL"
 export function fetchEmployee() {
     return dispatch => {
         dispatch({ type: FETCH_EMPLOYEE_START });
-
         api()
             .get(`/api/seeker`)
             .then(res => {
