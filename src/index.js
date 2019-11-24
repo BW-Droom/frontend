@@ -5,18 +5,23 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
 //redux 
 import { Provider } from 'react-redux';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import {reducer as employeeReducer} from './components/reducers/getEmployees';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
+// import {reducer as employeeReducer} from './components/reducers/getEmployees';
+// import {reducer as jobsReducer} from './components/reducers/addJobs'
+import rootReducer from './components/reducers/index'
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-const rootReducer = combineReducers({
-    employee: employeeReducer
-})
+// const rootReducer = combineReducers({
+//     employee: employeeReducer,
+//     job: jobsReducer
+// })
 
-const store = createStore(rootReducer, applyMiddleware(thunk, logger))
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger))
+  );
+  
 ReactDOM.render(
     <Provider store={store}>
         <Router>

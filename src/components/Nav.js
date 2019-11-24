@@ -12,6 +12,7 @@ import JobSeekerMatches from './JobSeeker/MatchPage';
 import CompanySwiping from './Company/Dashboard';
 import ListingForm from './Company/JobListingForm';
 import CompanyMatches from './Company/MatchPage';
+import EditACC from './JobSeeker/EditAccount';
 
 function Nav() {
     const signedIn = getToken()
@@ -52,6 +53,7 @@ function Nav() {
         <ProtectedRoute exact path='/seeker/matches' component={JobSeekerMatches} />
         <ProtectedRoute exact path='/seeker/account' component={Account} />
         <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
+        <ProtectedRoute exact path='/seeker/edit' component={EditACC} />
 
         <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
         <ProtectedRoute exact path='/company/matches' component={CompanyMatches} />
