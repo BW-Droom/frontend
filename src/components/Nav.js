@@ -3,19 +3,20 @@ import { Link, Route, withRouter } from "react-router-dom"
 import Signup from './SignUp';
 import Signin from './Login';
 import SeekerSwiping from './JobSeeker/Dashboard';
-import CompanySwiping from './Company/Dashboard';
-import ListingForm from './Company/JobListingForm';
 import Account from './Account';
 import { getToken } from '../utils/api';
-import { ProtectedRouteE, ProtectedRouteR, ProtectedRoute } from '../utils/ProtectedRoute';
+import { ProtectedRoute } from '../utils/ProtectedRoute';
 import SeekerForm from './JobSeeker/JobSeekerForm';
 import Logout from './logout';
-import CompanyMatches from './Company/MatchPage';
 import JobSeekerMatches from './JobSeeker/MatchPage';
+import CompanySwiping from './Company/Dashboard';
+import ListingForm from './Company/JobListingForm';
+import CompanyMatches from './Company/MatchPage';
 
-function Nav(props) {
+function Nav() {
     const signedIn = getToken()
-    const seeker = props.type === 'employee'
+    const seeker = localStorage.getItem('seeker')
+    const company = localStorage.getItem('company')
 
     return(
         <>
@@ -33,9 +34,9 @@ function Nav(props) {
             {seeker && signedIn && <Link to='/seeker/dreamjob'>Dream Job</Link>}
             {seeker && signedIn && <Link to='/seeker/account'>Account</Link>}
 
-            {!seeker && signedIn && <Link to='/company/dashboard'>Dashboard</Link>}
-            {!seeker && signedIn && <Link to='/company/matches'>Your Matches</Link>}
-            {!seeker && signedIn && <Link to='/company/listing'>Create a Listing</Link>}
+            {company && signedIn && <Link to='/company/dashboard'>Dashboard</Link>}
+            {company && signedIn && <Link to='/company/matches'>Your Matches</Link>}
+            {company && signedIn && <Link to='/company/listing'>Create a Listing</Link>}
 
             {!signedIn && <Link to='/signin'>Sign in</Link>}
             {!signedIn && <Link to='/signup'>Sign up</Link>}
@@ -47,15 +48,14 @@ function Nav(props) {
         <Route exact path='/signin' component={Signin} />
         <Route exact path='/signup' component={Signup} />      
 
-        <ProtectedRouteE exact path='/seeker/dashboard' component={SeekerSwiping} />
-        <ProtectedRouteE exact path='/seeker/matches' component={JobSeekerMatches} />
-        <ProtectedRouteE exact path='/seeker/account' component={Account} />
-        <ProtectedRouteE exact path='/seeker/dreamjob' component={SeekerForm} />
+        <ProtectedRoute exact path='/seeker/dashboard' component={SeekerSwiping} />
+        <ProtectedRoute exact path='/seeker/matches' component={JobSeekerMatches} />
+        <ProtectedRoute exact path='/seeker/account' component={Account} />
+        <ProtectedRoute exact path='/seeker/dreamjob' component={SeekerForm} />
 
-
-        <ProtectedRouteR exact path='/company/dashboard' component={CompanySwiping} />
-        <ProtectedRouteR exact path='/company/matches' component={CompanyMatches} />
-        <ProtectedRouteR exact path='/company/listing' component={ListingForm} />
+        <ProtectedRoute exact path='/company/dashboard' component={CompanySwiping} />
+        <ProtectedRoute exact path='/company/matches' component={CompanyMatches} />
+        <ProtectedRoute exact path='/company/listing' component={ListingForm} />
 
         <ProtectedRoute exact path='/logout' component={Logout} />
         </>

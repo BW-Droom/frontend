@@ -5,12 +5,16 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom'
 //redux 
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import {reducer as employeeReducer} from './components/reducers/getEmployees';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-// redux store
-const store = createStore( applyMiddleware(thunk, logger))
+const rootReducer = combineReducers({
+    employee: employeeReducer
+})
+
+const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 
 ReactDOM.render(

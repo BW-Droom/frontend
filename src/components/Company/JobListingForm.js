@@ -1,9 +1,8 @@
 import React from 'react';
+import ListingList from './Listings';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-// Company creates and removes job listings
 
 const useStyles = makeStyles(theme => ({
     formControl: {
@@ -13,7 +12,6 @@ const useStyles = makeStyles(theme => ({
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
-
         //TextField
         container: {
             display: 'flex',
@@ -29,29 +27,19 @@ const useStyles = makeStyles(theme => ({
             marginRight: theme.spacing(1),
             width: 600,
           },
-
   }));
-
 function ListingForm(props) {
-
     const classes = useStyles();
     const [type, setType] = React.useState('');
   
     const handleChange = event => {
       setType(event.target.value);
     };
-
     return (
         <>
         <form>
             <h1>Create a listing</h1>
-            {/* <div>
-                <h3>Current Listings</h3>
-                <h4>joblisting.map(eventually)</h4>
-                <h4>joblisting.map(eventually)</h4>
-                <h4>joblisting.map(eventually)</h4>
-            </div> */}
-
+            <ListingList />
             <TextField
                 name='title'
                 id="outlined-basic"
@@ -60,7 +48,6 @@ function ListingForm(props) {
                 margin="normal"
                 variant="outlined"
                 placeholder='Job Title' 
-
             />
             <br />
             <TextField
@@ -80,5 +67,4 @@ function ListingForm(props) {
         </>
     )
 }
-
 export default ListingForm
