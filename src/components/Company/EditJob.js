@@ -55,6 +55,7 @@ class EditJobForm extends React.Component {
       description: "",      
       id: '',
     });
+    window.location.reload(true)
   };
 
   

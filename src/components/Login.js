@@ -42,6 +42,7 @@ function Signin(props) {
 
 
     const [userCredentials, setUserCredential] = useState({
+        id: 9,
         email: '',
         password: '',
         type: '',
@@ -59,6 +60,10 @@ function Signin(props) {
           .post("/auth/seeker/login", userCredentials)
           .then(res => {
             console.log(res)
+            setUserCredential({
+              ...userCredentials,
+              id: res.data.seeker.id
+            })
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('seeker', res.data)
             props.history.push('/seeker/dashboard')
@@ -73,7 +78,10 @@ function Signin(props) {
         api()
             .post("/auth/company/login", userCredentials)
             .then(res => {
-              console.log(res)
+              setUserCredential({
+                ...userCredentials,
+                id: res.data.seeker.id
+              })
               localStorage.setItem('token', res.data.token)
               localStorage.setItem('company', res.data)
               props.history.push('/company/dashboard')

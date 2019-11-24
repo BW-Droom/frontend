@@ -56,9 +56,9 @@ class ListingForm extends React.Component {
     this.props.addJob(this.state);
     this.setState({
       job_title: "",
-      description: "", 
-          
+      description: "",   
     });
+    window.location.reload(true)
   };
   
   render() {
