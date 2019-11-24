@@ -58,7 +58,7 @@ class ListingForm extends React.Component {
       job_title: "",
       description: "",   
     });
-    window.location.reload(true)
+    // window.location.reload(true)
   };
   
   render() {

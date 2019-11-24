@@ -29,7 +29,7 @@ export default function Employee(props) {
   return (
     <div>
 
-<SwipeableList className='swipingContainer'>
+<SwipeableList threshold={0.25} className='swipingContainer'>
   <SwipeableListItem
   className='swipingContainer'
     swipeLeft={{
