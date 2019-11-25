@@ -39,7 +39,7 @@ export default function Employee(props) {
     }}
     swipeRight={{
       content: <h1 className='match'>This is a match</h1>,
-      action: () => console.info('swipe action triggered')
+      action: () => alert("sent to your matches")
     }}
   >
     <Card className={classes.card}>
@@ -62,7 +62,7 @@ export default function Employee(props) {
         </CardContent>
       </CardActionArea>
       <CardActions className="actionButton">
-        <Button className="xButton" size="large" color="primary">
+        <Button  className="xButton" size="large" color="primary">
         <img className="xButton" src="https://www.trzcacak.rs/myfile/full/51-515377_x-mark-transparent-background-png-x.png" alt="xmate" />
         </Button>
         <Button className="checkButton" size="large" color="primary">

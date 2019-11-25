@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SeekerGetMatch from '../SeekerGetMatch';
+import SeekerGetMatch from './SeekerGetMatch';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -7,7 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import CompanyGetMatch from '../CompanyGetMatch';
+
 
 // import Job from './Company/Job/Job';
 
@@ -35,7 +35,7 @@ function CompanyMatches(props) {
     return(
         <>
         <h1>Your Matches</h1>
-        <CompanyGetMatch />
+        
 
         <Card className={classes.card}>
             <CardContent>

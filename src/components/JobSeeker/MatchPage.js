@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SeekerGetMatch from '../SeekerGetMatch';
+import CompanyGetMatch from './CompanyGetMatch';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -27,25 +27,25 @@ const useStyles = makeStyles({
   });
 
 function JobSeekerMatches(props) {
-
+  console.log('jake from state farm', props)
 
         const classes = useStyles();
 
     return(
         <>
         <h1>Your Job Matches</h1>
-
+<CompanyGetMatch />
         <Card className={classes.card}>
             <CardContent>
                 <Typography gutterBottom variant="h5" component="h2">
-                {props.company.name}
+                Company Name: {props.name}
                 </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
-                {props.company.email}
+                {props.email}
                 </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                {/* <Typography variant="body2" color="textSecondary" component="p">
                 {props.company.job_title}
-                </Typography>
+                </Typography> */}
             </CardContent>
         </Card>
         </>

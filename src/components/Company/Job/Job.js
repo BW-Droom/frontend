@@ -2,7 +2,7 @@ import React from "react";
 import Button from '@material-ui/core/Button';
 
 function Job(props) {
- 
+ console.log(props.job)
   return (
     <>
         <div className='jobcontainer'>
