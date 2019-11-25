@@ -27,7 +27,7 @@ function CompanyGetMatch(props) {
 
     useEffect(() => {
         
-        api().get(`/api/company/1/match/`) 
+        api().get(`/api/company/`) 
         .then((response) => {
             console.log(response.data)
             setNewCompanyMatches(response.data)      
