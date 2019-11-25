@@ -63,13 +63,15 @@ import {
       case ADD_JOB_START:
         return {
           ...state,
-          isFetchingJobs: true
+          isFetchingJobs: true,
         };
       case ADD_JOB_SUCCESS:
+        const newJobs = state.jobs
+         newJobs.push(action.payload)
         return {
           ...state,
           isFetchingJobs: false,
-          jobs: action.payload,
+          jobs: newJobs,
           error: null
         };
       case ADD_JOB_FAILURE:
@@ -84,6 +86,7 @@ import {
             isFetchingJobs: true
         };
       case EDIT_JOB_SUCCESS:
+          
         return {
             ...state,
             isFetchingJobs: false,
