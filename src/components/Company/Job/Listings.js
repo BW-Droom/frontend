@@ -5,10 +5,6 @@ import Job from './Job';
 
 function List(props) { 
   console.log(props) 
-    
-     
-      
-      
   return (
     <>     
       
@@ -23,5 +19,4 @@ function List(props) {
     </>
   );
 }
-
 export default connect(null, { deleteJob })(List);
